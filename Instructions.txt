@@ -1,0 +1,72 @@
+1. Login to the AWS Academy Learner Lab and Start Lab.
+
+2. Download security credentials, the key pair named labuser in .pem and .ppk format and PuTTY through the AWS Details and Readme tabs of the AWS Academy Learner Lab.
+
+3. Download and unzip the Git repository.
+- https://github.com/kevinbayliss/cloudformation-demo
+
+4. Create a Management EC2 instance through CloudFormation on the AWS console and connect to it through PuTTY.
+- cloudformation-demo-main\management\template.yaml
+
+5. Add an SSH access rule to the default security group.
+
+6. Confirm Ansible and Terraform CLI access.
+- ansible --version && terraform --version
+
+7. Clone the Git repository.
+- cd ~ && git clone https://github.com/kevinbayliss/terraform-demo && cd terraform-demo && ls
+
+8. Create an EC2 instance through Terraform.
+- cd demo_tf_01 && ls && vi main.tf
+provider "aws" {
+  access_key = "<AK>"
+  secret_key = "<SK>"
+  token = "<T>"
+  region = "us-east-1"
+}
+- terraform init
+- terraform plan && terraform apply -auto-approve
+
+9. View the Terraform state.
+- ls && cat terraform.tfstate
+
+10. Connect to the EC2 instance through PuTTY.
+
+11. Delete the module.
+- terraform destroy -auto-approve
+
+12. Create an EC2 instance and an S3 bucket through Terraform.
+- cd ../demo_tf_02 && ls && vi main.tf
+provider "aws" {
+  access_key = "<AK>"
+  secret_key = "<SK>"
+  token = "<T>"
+  region = "us-east-1"
+}
+- terraform init
+- terraform plan -out output.terraform && terraform apply -auto-approve output.terraform
+
+13. Update the module so the EC2 instance is now named "Demo_Updated".
+- cd ../demo_tf_03 && ls && vi main.tf
+- terraform init
+- terraform plan -out output.terraform && terraform apply -auto-approve output.terraform
+
+14. Delete the module.
+- terraform destroy -auto-approve
+
+15. Update the module so the EC2 instance is now named "Demo_Updated".
+- cd ../demo_tf_02 && vi main.tf
+	Name = "Demo_Updated"
+- terraform plan -out output.terraform && terraform apply -auto-approve output.terraform
+
+16. Delete the module.
+- terraform destroy -auto-approve
+
+17. Create two EC2 instances using parameters through Terraform.
+- cd ../demo_tf_04 && ls && echo -e "\n---provider.tf---" && cat provider.tf && echo -e "\n\n---main.tf---" && cat main.tf && echo -e "\n\n---vars.tf---" && cat vars.tf
+- vi terraform.tfvars
+ACCESS_KEY = "<AK>"
+SECRET_KEY = "<SK>"
+TOKEN = "<T>"
+- terraform init
+- terraform plan -out output.terraform && terraform apply -auto-approve output.terraform
