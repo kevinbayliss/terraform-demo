@@ -48,6 +48,12 @@ provider "aws" {
 
 13. Update the module so the EC2 instance is now named "Demo_Updated".
 - cd ../demo_tf_03 && ls && vi main.tf
+provider "aws" {
+  access_key = "<AK>"
+  secret_key = "<SK>"
+  token = "<T>"
+  region = "us-east-1"
+}
 - terraform init
 - terraform plan -out output.terraform && terraform apply -auto-approve output.terraform
 
