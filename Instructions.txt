@@ -1,0 +1,62 @@
+1. Login to the AWS Academy Learner Lab and start lab.
+
+2. Create and open a Cloud9 environment with a Secure Shell (SSH) connection type.
+
+3. Clone the Git repository.
+- git clone https://github.com/kevinbayliss/terraform-demo
+
+4. Install Terraform in the Cloud9 environment using the installation.sh script.
+- cd ~/environment && chmod +x terraform-demo/installation/installation.sh && ./terraform-demo/installation/installation.sh
+
+5. Confirm Terraform CLI access.
+- terraform --version
+
+6. Create an EC2 instance through Terraform.
+- cd terraform-demo/demo_tf_01 && ls
+- terraform init
+- terraform plan && terraform apply -auto-approve
+
+7. Add an SSH access rule to the default security group.
+
+8. View the Terraform state.
+- ls && terraform show
+
+9. Connect to the EC2 instance through EC2 Instance Connect.
+
+10. Delete the module.
+- terraform destroy -auto-approve
+
+11. Create an EC2 instance and an S3 bucket through Terraform.
+- cd ../demo_tf_02 && ls
+- terraform init
+- terraform plan -out output.terraform && terraform apply -auto-approve output.terraform
+
+12. Update the module through Terraform so the EC2 instance is now named "Demo_Updated".
+- cd ../demo_tf_03 && ls
+- terraform init
+- terraform plan -out output.terraform && terraform apply -auto-approve output.terraform
+
+13. Delete the module.
+- terraform destroy -auto-approve
+
+14. Update the module through Terraform so the EC2 instance is now named "Demo_Updated".
+- cd ../demo_tf_02 && ls
+	Name = "Demo_Updated"
+- terraform plan -out output.terraform && terraform apply -auto-approve output.terraform
+
+15. Delete the module.
+- terraform destroy -auto-approve
+
+16. Create two EC2 instances using parameters through Terraform.
+- cd ../demo_tf_04 && ls
+- terraform init
+- terraform plan -out output.terraform && terraform apply -auto-approve output.terraform
+
+17. Delete the module.
+- terraform destroy -auto-approve
+
+18. Close and delete the Cloud9 environment.
+
+19. Remove the SSH access rule from the default security group.
+
+20. End Lab and logout of the AWS Academy Learner Lab.
